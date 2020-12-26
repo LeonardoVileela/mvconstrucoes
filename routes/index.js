@@ -27,10 +27,6 @@ router.get('/employees', function (req, res, next) {
 
 })
 
-
-
-
-
 module.exports = router;
 
 
