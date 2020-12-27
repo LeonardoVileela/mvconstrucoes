@@ -1,2 +1,37 @@
 <%- include("inc/head") -%>
-<%- include("inc/footer") -%>
+
+    <!-- /.card -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Dados do funcionário</h3>
+        </div>
+
+        <div class="card-body">
+            <form action="/cadaster" method="post">
+            <div class="row">
+
+                <div class="col-4 form-group">
+                    <label for="name">Nome</label>
+                    <input name="name" id="name" type="text" class="form-control" placeholder="Nome">
+                </div>
+                <div class="col-4 form-group">
+                    <label for="cpf">CPF</label>
+                    <input name="cpf" id="cpf" type="text" class="form-control" placeholder="CPF">
+                </div>
+                <div class="col-4 form-group">
+                    <label for="salario">Salário</label>
+                    <input name="salario" id="salario" type="text" class="form-control" placeholder="Salário">
+                </div>
+                <div class="card-footer form-group">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+            </form>
+        </div>
+
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+
+    <%- include("inc/footer") -%>

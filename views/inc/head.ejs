@@ -40,6 +40,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
+            <a style="text-align: right;" href="/logout">Sair</a>
 
 
         </nav>
@@ -62,27 +63,30 @@
                         data-accordion="false">
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Home
-                                </p>
+                            <a href="/" <% if(menu=="index" ){ %> class="nav-link active" <% } else { %>
+                                    class="nav-link" <% } %> >
+                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <p>
+                                            Home
+                                        </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Cadastrar
-                                </p>
+                            <a href="/cadaster" <% if(menu=="cadaster" ){ %> class="nav-link active" <% } else { %>
+                                    class="nav-link" <% } %> >
+                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <p>
+                                            Cadastrar
+                                        </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Funcionários
-                                </p>
+                            <a href="/employees" <% if(menu=="employees" ){ %> class="nav-link active" <% } else { %>
+                                    class="nav-link" <% } %> >
+                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <p>
+                                            Funcionários
+                                        </p>
                             </a>
                         </li>
                     </ul>
@@ -100,7 +104,17 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
+                            <% if(menu=="index"){ %> 
+                                <h1 class="m-0">Home</h1>
+                            <% } %>
+                            <% if(menu=="cadaster"){ %> 
+                                <h1 class="m-0">Cadastro</h1>
+                            <% } %>
+                            <% if(menu=="employees"){ %> 
+                                <h1 class="m-0">Funcionários</h1>
+                            <% } %>
+
+                            
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -112,3 +126,5 @@
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
+            <section class="content">
+                <div class="container-fluid">
