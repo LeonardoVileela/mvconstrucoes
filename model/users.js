@@ -1,4 +1,4 @@
-var conn = require('./../inc/db')
+var conn = require('./db')
 
 module.exports = {
 

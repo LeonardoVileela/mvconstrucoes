@@ -1,5 +1,5 @@
-var conn = require('./../inc/db')
-var users = require('./../inc/users')
+var conn = require('./../model/db')
+var users = require('./../model/users')
 var express = require('express');
 var router = express.Router();
 
