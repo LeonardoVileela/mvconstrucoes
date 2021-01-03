@@ -1,6 +1,17 @@
 <%- include("inc/head") -%>
 
     <!-- /.card -->
+    <% if(typeof error === 'string'){ %> 
+        <div class="alert alert-danger">
+            <%= error %> 
+        </div>
+        <% } %> 
+        <% if(typeof success === 'string'){ %> 
+            <div class="alert alert-success">
+                <%= success %> 
+            </div>
+        <% } %> 
+        
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Dados do funcionário</h3>
@@ -20,7 +31,7 @@
                 </div>
                 <div class="col-4 form-group">
                     <label for="salario">Salário</label>
-                    <input name="salario" id="salario" type="text" class="form-control" placeholder="Salário">
+                    <input name="salary" id="salary" type="text" class="form-control" placeholder="Salário">
                 </div>
                 <div class="card-footer form-group">
                     <button type="submit" class="btn btn-primary">Salvar</button>

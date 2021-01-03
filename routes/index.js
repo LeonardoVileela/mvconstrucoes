@@ -1,5 +1,6 @@
 var conn = require('./../model/db')
 var users = require('./../model/users')
+var func = require('./../model/func')
 var express = require('express');
 var router = express.Router();
 
@@ -64,11 +65,19 @@ router.get('/cadaster', function (req, res, next) {
 })
 router.post('/cadaster', function (req, res, next) {
 
-  res.render('index', {
-    active: 'index',
-    menu: 'index'
-  });
-
+  func.postFunc(req.body).then(results => {
+    res.render('cadaster', {
+      success: 'Cadastro realizado com sucesso',
+      active: 'cadaster',
+      menu: 'cadaster'
+    })
+  }).catch(err => {
+    res.render('cadaster', {
+      error: err.toString(),
+      active: 'cadaster',
+      menu: 'cadaster'
+    })
+  })
 })
 router.get('/employees', function (req, res, next) {
 
