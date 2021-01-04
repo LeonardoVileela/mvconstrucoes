@@ -42,16 +42,36 @@ router.get('/logout', function (req, res, next) {
 
   delete req.session.user
   res.redirect("/login")
-  
+
 
 })
 
 router.get('/', function (req, res, next) {
-
-  res.render('index', {
-    active: 'index',
-    menu: 'index'
-  });
+  
+  conn.query(
+    'SELECT SUM(salary) FROM func',
+    function (err, results) {
+      if (err) {
+        console.log(err);
+      } else {
+        conn.query(
+          'SELECT COUNT(cpf) FROM func',
+          function (err, resultado) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.render('index', {
+                active: 'index',
+                menu: 'index',
+                contSalary: results,
+                cont: resultado
+              });
+            }
+          }
+        )
+      }
+    }
+  )
 
 })
 
@@ -81,10 +101,21 @@ router.post('/cadaster', function (req, res, next) {
 })
 router.get('/employees', function (req, res, next) {
 
-  res.render('employees', {
-    active: 'employees',
-    menu: 'employees'
-  });
+
+  conn.query(
+    'SELECT * FROM func ORDER BY name;',
+    function (err, results) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render('employees', {
+          active: 'employees',
+          menu: 'employees',
+          func: results
+        });
+      }
+    }
+  );
 
 })
 

@@ -1,2 +1,32 @@
 <%- include("inc/head") -%>
-<%- include("inc/footer") -%>
+
+
+    <div class="card">
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Sálario</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% func.forEach(row=> { %>
+                    <tr>
+                        <td><%= row.name %></td>
+                        <td><%= row.cpf %></td>
+                        <td>R$ <%= row.salary %></td>
+                        <td></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+
+    <%- include("inc/footer") -%>

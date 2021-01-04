@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Gerenciador</title>
+    <link rel="shortcut icon" href="https://imagepng.org/wp-content/uploads/2019/08/google-chrome-icon.png"/>
+
+
+    <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  
+</head>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -48,10 +59,8 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <a href="#" class="brand-link">
+                <span class="brand-text font-weight-light"> Funcionários</span>
             </a>
 
             <!-- Sidebar -->
@@ -65,7 +74,7 @@
                         <li class="nav-item">
                             <a href="/" <% if(menu=="index" ){ %> class="nav-link active" <% } else { %>
                                     class="nav-link" <% } %> >
-                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <i class="nav-icon fas fa-home"></i>
                                         <p>
                                             Home
                                         </p>
@@ -74,7 +83,7 @@
                         <li class="nav-item">
                             <a href="/cadaster" <% if(menu=="cadaster" ){ %> class="nav-link active" <% } else { %>
                                     class="nav-link" <% } %> >
-                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <i class="nav-icon fas fa-plus-square"></i>
                                         <p>
                                             Cadastrar
                                         </p>
@@ -83,7 +92,7 @@
                         <li class="nav-item">
                             <a href="/employees" <% if(menu=="employees" ){ %> class="nav-link active" <% } else { %>
                                     class="nav-link" <% } %> >
-                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <i class="nav-icon fas fa-users"></i>
                                         <p>
                                             Funcionários
                                         </p>
