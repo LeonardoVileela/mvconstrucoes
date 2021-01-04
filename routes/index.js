@@ -1,6 +1,7 @@
 var conn = require('./../model/db')
 var users = require('./../model/users')
 var func = require('./../model/func')
+var edit = require('./../model/editemployees')
 var express = require('express');
 var router = express.Router();
 
@@ -47,7 +48,7 @@ router.get('/logout', function (req, res, next) {
 })
 
 router.get('/', function (req, res, next) {
-  
+
   conn.query(
     'SELECT SUM(salary) FROM func',
     function (err, results) {
@@ -99,6 +100,41 @@ router.post('/cadaster', function (req, res, next) {
     })
   })
 })
+
+router.get('/editemployees', function (req, res, next) {
+
+  conn.query(
+    'SELECT * FROM func WHERE cpf = "' + req.query.v + '";',
+    function (err, results) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render('editemployees', {
+          active: 'editemployees',
+          menu: 'editemployees',
+          edit: results
+        });
+      }
+    }
+  );
+
+})
+
+router.post('/editemployees', function (req, res, next) {
+  console.log(req.query.v)
+  edit.editEmployees(req.query.v, req.body).then(results => {
+    console.log('True')
+    res.redirect("/employees")
+
+  }).catch(err => {
+    console.log(err)
+    res.redirect("/employees")
+  })
+
+
+})
+
+
 router.get('/employees', function (req, res, next) {
 
 
