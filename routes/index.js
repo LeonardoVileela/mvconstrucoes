@@ -1,12 +1,13 @@
 var conn = require('./../model/db')
 var users = require('./../model/users')
 var func = require('./../model/func')
+var uploadRequire = require('./../model/upload')
 var edit = require('./../model/editemployees')
 var express = require('express');
+var fs = require('fs');
 var router = express.Router();
 var multer = require('multer')
 var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
-
 
 router.use(function (req, res, next) {
 
@@ -25,6 +26,8 @@ router.get('/login', function (req, res, next) {
   });
 
 })
+
+
 
 
 router.post('/login', function (req, res, next) {
@@ -137,22 +140,53 @@ router.post('/editemployees', function (req, res, next) {
 
 
 router.get('/employees', function (req, res, next) {
+  if (req.query.v == undefined) {
 
-
-  conn.query(
-    'SELECT * FROM func ORDER BY name;',
-    function (err, results) {
-      if (err) {
-        console.log(err);
-      } else {
-        res.render('employees', {
-          active: 'employees',
-          menu: 'employees',
-          func: results
-        });
+    conn.query(
+      'SELECT * FROM func ORDER BY name;',
+      function (err, results) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render('employees', {
+            active: 'employees',
+            menu: 'employees',
+            func: results,
+            files: "not"
+          });
+        }
       }
-    }
-  );
+    );
+
+  } else {
+    conn.query(
+      'SELECT * FROM func ORDER BY name;',
+      function (err, results) {
+        if (err) {
+          console.log(err);
+        } else {
+          conn.query(
+            'SELECT * FROM files WHERE cpf = "' + req.query.v + '";',
+            function (err, resultado) {
+              if (err) {
+                console.log(err);
+              } else {
+                res.render('employees', {
+                  active: 'employees',
+                  menu: 'employees',
+                  func: results,
+                  files: resultado
+                });
+              }
+            }
+          )
+        }
+      }
+    )
+  }
+
+
+
 
 })
 
@@ -171,10 +205,23 @@ router.post('/upload', upload.single('avatar'), function (req, res, next) {
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
 
-  res.redirect("/employees")
+  uploadRequire.uploadArchive(req.file.originalname, req.query.v).then(results => {
+    console.log('True')
+    res.redirect("/employees")
+  }).catch(err => {
+    console.log(err)
+    res.redirect("/employees")
+  })
+
 })
 
 // UPLOAD 
+
+
+router.get('/documents', function (req, res, next) {
+  res.download("/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/" + req.query.file)
+})
+
 
 module.exports = router;
 

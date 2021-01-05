@@ -25,7 +25,8 @@
                             </td>
                             <td>
                                 <a href="/editemployees?v=<%=row.cpf%>"><i class="fas fa-edit"></i></a>
-                                <a data-toggle="modal" data-target="#modal-default"><i class="fas fa-upload"></i></a>
+                                <a onclick="teste('<%=row.cpf%>')" data-toggle="modal" data-target="#modal-default"><i
+                                        class="fas fa-upload"></i></a>
                             </td>
 
                         </tr>
@@ -48,12 +49,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>One fine body&hellip;</p>
+
+        
+                    <% if(files != "not"){ %> 
+                    <% files.forEach(row=> { %>
+                        <a href="/documents?file=<%= row.file  %>" target="_blank" rel="noopener noreferrer"><%= row.file  %></a><br>
+                    <% }) %>
+                    <% } %> 
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <form action="/upload" method="post" enctype="multipart/form-data">
-                    <input name="avatar" type="file" class="form-control-file" id="exampleFormControlFile1">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <form id="formUpload" action="/upload" method="post" enctype="multipart/form-data">
+                        <input name="avatar" type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
                 </div>
             </div>
@@ -62,6 +69,13 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+    <script>
 
+       
+
+    </script>
 
     <%- include("inc/footer") -%>
+
+
+     
