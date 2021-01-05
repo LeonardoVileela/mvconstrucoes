@@ -4,6 +4,8 @@ var func = require('./../model/func')
 var edit = require('./../model/editemployees')
 var express = require('express');
 var router = express.Router();
+var multer = require('multer')
+var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
 
 
 router.use(function (req, res, next) {
@@ -121,7 +123,6 @@ router.get('/editemployees', function (req, res, next) {
 })
 
 router.post('/editemployees', function (req, res, next) {
-  console.log(req.query.v)
   edit.editEmployees(req.query.v, req.body).then(results => {
     console.log('True')
     res.redirect("/employees")
@@ -154,6 +155,26 @@ router.get('/employees', function (req, res, next) {
   );
 
 })
+
+// UPLOAD 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+var upload = multer({ storage });
+
+router.post('/upload', upload.single('avatar'), function (req, res, next) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+
+  res.redirect("/employees")
+})
+
+// UPLOAD 
 
 module.exports = router;
 

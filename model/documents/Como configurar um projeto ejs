@@ -1,0 +1,7 @@
+sudo npm install express-generator -g
+
+sudo express --ejs funcionario  
+
+npm install // na pasta do projeto
+
+DEBUG=funcionario:* npm start
