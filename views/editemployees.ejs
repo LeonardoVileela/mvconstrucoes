@@ -18,37 +18,37 @@
                         </div>
 
                         <div class="card-body">
-                                <% edit.forEach(row=> { %>
-                            <form action="/editemployees?v=<%=row.cpf%>" method="post">
-                                <div class="row">
-                                    
-                                    <div class="col-4 form-group">
-                                        <label for="name">Nome</label>
-                                        <input name="name" id="name" type="text" class="form-control"
-                                            placeholder="Nome" value="<%=row.name%>">
+                            <% edit.forEach(row=> { %>
+                                <form action="/editemployees?v=<%=row.cpf%>" method="post">
+                                    <div class="row">
+
+                                        <div class="col-4 form-group">
+                                            <label for="name">Nome</label>
+                                            <input name="name" id="name" type="text" class="form-control"
+                                                placeholder="Nome" value="<%=row.name%>">
+                                        </div>
+                                        <div class="col-4 form-group">
+                                            <label for="cpf">CPF</label>
+                                            <input name="cpf" id="cpf" type="text" class="form-control cpf"
+                                                placeholder="CPF" value="<%=row.cpf%>">
+                                        </div>
+
+                                        <div class="col-4 form-group">
+                                            <label for="salario">Salário</label>
+                                            <input name="salary" id="salary" type="text" class="form-control salary"
+                                                placeholder="Salário" value="<%=row.salary.toFixed(2)%>">
+                                        </div>
+                                        <% }) %>
+                                            <div class="card-footer form-group">
+                                                <button type="submit" class="btn btn-primary">Editar</button>
+                                            </div>
                                     </div>
-                                    <div class="col-4 form-group">
-                                        <label for="cpf">CPF</label>
-                                        <input name="cpf" id="cpf" type="text" class="form-control cpf" placeholder="CPF" value="<%=row.cpf%>">
-                                    </div>
-                                    <div class="col-4 form-group">
-                                        <label for="salario">Salário</label>
-                                        <input name="salary" id="salary" type="text" class="form-control salary" placeholder="Salário" value="<%=row.salary%>">
-                                    </div>
-                                    <% }) %>
-                                    <div class="card-footer form-group">
-                                        <button type="submit" class="btn btn-primary">Editar</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
                         </div>
 
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
 
-                   
 
-
-
-                    <%- include("inc/footer") -%>
+<%- include("inc/footer") -%>

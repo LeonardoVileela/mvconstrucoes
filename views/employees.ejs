@@ -1,6 +1,4 @@
 <%- include("inc/head") -%>
-
-
     <div class="card">
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
@@ -21,12 +19,16 @@
                             <td>
                                 <%= row.cpf %>
                             </td>
-                            <td>R$ <%= row.salary %>
+                            <td>
+                                R$ <%= row.salary.toFixed(2) %>
                             </td>
                             <td>
-                                <a href="/editemployees?v=<%=row.cpf%>"><i class="fas fa-edit"></i></a>
-                                <a onclick="teste('<%=row.cpf%>')" data-toggle="modal" data-target="#modal-default"><i
-                                        class="fas fa-upload"></i></a>
+                                <div id="icons-table-employees">
+                                    <a id="edit-button" href="/editemployees?v=<%=row.cpf%>"><i
+                                            class="fas fa-edit"></i></a>
+                                    <a id="upload-button" href="" onclick="teste('<%=row.cpf%>')" data-toggle="modal"
+                                        data-target="#modal-default"><i class="fas fa-upload"></i></a>
+                                </div>
                             </td>
 
                         </tr>
@@ -38,7 +40,6 @@
     </div>
     <!-- /.card -->
 
-
     <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -49,13 +50,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
-        
-                    <% if(files != "not"){ %> 
-                    <% files.forEach(row=> { %>
-                        <a href="/documents?file=<%= row.file  %>" target="_blank" rel="noopener noreferrer"><%= row.file  %></a><br>
-                    <% }) %>
-                    <% } %> 
+                    <% if(files !="not" ){ %>
+                        <% files.forEach(row=> { %>
+                        <div id="modal-content">
+                            <a id="file-upload-modal" href="/documents?file=<%= row.file  %>" target="_blank" rel="noopener noreferrer">
+                                <%= row.file %>
+                            </a>
+                            <a id="trash-icon-flie" href="/delete?file=<%= row.file  %>"><i class="fas fa-trash-alt"></i></a><br>
+                        </div>
+                            <% }) %>
+                                <% } %>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <form id="formUpload" action="/upload" method="post" enctype="multipart/form-data">
@@ -69,13 +73,4 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-    <script>
-
-       
-
-    </script>
-
-    <%- include("inc/footer") -%>
-
-
-     
+<%- include("inc/footer") -%>

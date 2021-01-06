@@ -23,7 +23,7 @@
           <div class="small-box bg-danger">
             <div class="inner">
               <% contSalary.forEach(row=> { %>
-                <h3><%= Object.values(row)%> </h3>
+                <h3><%= parseFloat(Object.values(row)).toFixed(2)%> </h3>
                 <% }) %> 
               <p>Total De Sálarios</p>
             </div>

@@ -21,7 +21,6 @@ router.use(function (req, res, next) {
 
 router.get('/login', function (req, res, next) {
 
-
   res.render('login', {
   });
 
@@ -222,6 +221,25 @@ router.get('/documents', function (req, res, next) {
   res.download("/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/" + req.query.file)
 })
 
+router.get('/delete', function (req, res, next) {
+  fs.unlinkSync("/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/" + req.query.file)
+
+
+  conn.query(
+    'DELETE FROM files WHERE files.file ="' + req.query.file + '";',
+    function (err, results) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.redirect("/employees")
+      }
+    }
+  );
+
+
+
+
+})
 
 module.exports = router;
 

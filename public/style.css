@@ -1,0 +1,23 @@
+#edit-button {
+    margin-left: 4px;
+}
+
+#edit-button {
+    margin-right: 4px;
+}
+
+#icons-table-employees {
+   text-align: center;
+}
+
+#modal-content {
+    margin-bottom: 5px;
+}
+#file-upload-modal {
+    margin-left: 10px;
+}
+#trash-icon-flie {
+    color: red; 
+    text-align: right; 
+    float: left;
+}
