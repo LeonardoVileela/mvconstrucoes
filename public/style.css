@@ -16,8 +16,17 @@
 #file-upload-modal {
     margin-left: 10px;
 }
-#trash-icon-flie {
+#trash-icon-file {
     color: red; 
     text-align: right; 
     float: left;
+}
+
+.padding-button-modal {
+    padding-right: 30px; 
+    padding-left: 30px;
+}
+
+.pointer {
+    cursor: pointer;
 }

@@ -139,8 +139,8 @@ router.post('/editemployees', function (req, res, next) {
 
 
 router.get('/employees', function (req, res, next) {
-  if (req.query.v == undefined) {
 
+  if (req.query.v == undefined) {
     conn.query(
       'SELECT * FROM func ORDER BY name;',
       function (err, results) {
@@ -222,8 +222,8 @@ router.get('/documents', function (req, res, next) {
 })
 
 router.get('/delete', function (req, res, next) {
+  
   fs.unlinkSync("/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/" + req.query.file)
-
 
   conn.query(
     'DELETE FROM files WHERE files.file ="' + req.query.file + '";',

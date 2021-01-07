@@ -26,8 +26,7 @@
                                 <div id="icons-table-employees">
                                     <a id="edit-button" href="/editemployees?v=<%=row.cpf%>"><i
                                             class="fas fa-edit"></i></a>
-                                    <a id="upload-button" href="" onclick="teste('<%=row.cpf%>')" data-toggle="modal"
-                                        data-target="#modal-default"><i class="fas fa-upload"></i></a>
+                                    <a id="upload-button" href="?v=<%=row.cpf%>"><i class="fas fa-upload"></i></a>
                                 </div>
                             </td>
 
@@ -44,7 +43,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Default Modal</h4>
+                    <h4 class="modal-title">Arquivos</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -52,19 +51,25 @@
                 <div class="modal-body">
                     <% if(files !="not" ){ %>
                         <% files.forEach(row=> { %>
-                        <div id="modal-content">
-                            <a id="file-upload-modal" href="/documents?file=<%= row.file  %>" target="_blank" rel="noopener noreferrer">
-                                <%= row.file %>
-                            </a>
-                            <a id="trash-icon-flie" href="/delete?file=<%= row.file  %>"><i class="fas fa-trash-alt"></i></a><br>
-                        </div>
+                            <div id="modal-content">
+                                <a id="file-upload-modal" href="/documents?file=<%= row.file  %>" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <%= row.file %>
+                                </a>
+                                <a onclick="messegeDelete('<%= row.file  %>')" id="trash-icon-file"><i
+                                        class="fas fa-trash-alt pointer"></i></a><br>
+                            </div>
                             <% }) %>
                                 <% } %>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <form id="formUpload" action="/upload" method="post" enctype="multipart/form-data">
-                        <input name="avatar" type="file" class="form-control-file" id="exampleFormControlFile1">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <div class="modal-footer justify-content-between">
+                            <input name="avatar" type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <button type="button" class="btn btn-primary padding-button-modal"
+                                data-dismiss="modal">Sair</button>
+                            <button type="submit" class="btn btn-primary padding-button-modal">Enviar</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -73,4 +78,5 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-<%- include("inc/footer") -%>
+    <%- include("inc/footer") -%>
+

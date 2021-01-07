@@ -75,6 +75,7 @@
 
 <!-- Page specific script -->
 <script>
+
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -109,12 +110,6 @@
 
   });
 
-  function teste(cpf) {
-    window.location.href = window.location.pathname + '?v=' + cpf;
-
-   
-
-  }
   window.onload = modal;
 
   function modal() {
@@ -140,6 +135,13 @@
       document.getElementById("formUpload").action = "/upload?v=" + paramArray['v']
     }
 
+  }
+  function messegeDelete(file) {
+    conf = confirm("Tem certeza que deseja eliminar esse arquivo?")
+    if (conf) {
+      url = "http://localhost:3000/delete?file=" + file
+      window.location.replace(url);
+    }
   }
 
 
