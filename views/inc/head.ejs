@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gerenciador</title>
+    <title>MV CONSTRUÇÕES</title>
     <link rel="shortcut icon" href="https://imagepng.org/wp-content/uploads/2019/08/google-chrome-icon.png" />
 
 
@@ -63,7 +63,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <span class="brand-text font-weight-light"> Funcionários</span>
+                <span style="margin-left: 35px;" class="brand-text font-weight-light">MV CONSTRUÇÕES</span>
             </a>
 
             <!-- Sidebar -->
@@ -83,24 +83,77 @@
                                         </p>
                             </a>
                         </li>
+
+
                         <li class="nav-item">
-                            <a href="/cadaster" <% if(menu=="cadaster" ){ %> class="nav-link active" <% } else { %>
+                            <a href="#" <% if(menu=="cadaster" || menu=="employees" ){ %> class="nav-link active" <% }
+                                    else { %>
                                     class="nav-link" <% } %> >
-                                        <i class="nav-icon fas fa-plus-square"></i>
-                                        <p>
-                                            Cadastrar
-                                        </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/employees" <% if(menu=="employees" ){ %> class="nav-link active" <% } else { %>
-                                    class="nav-link" <% } %> >
-                                        <i class="nav-icon fas fa-users"></i>
+                                        <i class="fas fa-user-clock"></i>
                                         <p>
                                             Funcionários
+                                            <i class="right fas fa-angle-left"></i>
                                         </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/cadaster" <% if(menu=="cadaster" ){ %> class="nav-link active" <% } else {
+                                            %>
+                                            class="nav-link" <% } %> >
+                                                <i class="nav-icon fas fa-plus-square"></i>
+                                                <p>
+                                                    Cadastrar Funcionário
+                                                </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/employees" <% if(menu=="employees" ){ %> class="nav-link active" <% } else
+                                            { %>
+                                            class="nav-link" <% } %> >
+                                                <i class="nav-icon fas fa-users"></i>
+                                                <p>
+                                                    Lista de Funcionários
+                                                </p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="#" <% if(menu=="cadasterclient" || menu=="clients" ){ %> class="nav-link active" <%
+                                    } else { %>
+                                    class="nav-link" <% } %> >
+                                        <i class="fas fa-business-time"></i>
+                                        <p>
+                                            Clientes
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/cadasterclient" <% if(menu=="cadasterclient" ){ %> class="nav-link active"
+                                        <% } else { %>
+                                            class="nav-link" <% } %> >
+                                                <i class="nav-icon fas fa-plus"></i>
+                                                <p>
+                                                    Cadastrar Cliente
+                                                </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/clients" <% if(menu=="clients" ){ %> class="nav-link active" <% } else {
+                                            %>
+                                            class="nav-link" <% } %> >
+                                                <i class="nav-icon fas fa-user-tie"></i>
+                                                <p>
+                                                    Lista de Clientes
+                                                </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
                     </ul>
 
                 </nav>
@@ -120,11 +173,17 @@
                                 <h1 class="m-0">Home</h1>
                                 <% } %>
                                     <% if(menu=="cadaster" ){ %>
-                                        <h1 class="m-0">Cadastro</h1>
+                                        <h1 class="m-0">Cadastro Funcionário</h1>
                                         <% } %>
                                             <% if(menu=="employees" ){ %>
                                                 <h1 class="m-0">Funcionários</h1>
-                                                <% } %>
+                                                <% } %> 
+                                                    <% if(menu=="clients" ){ %>
+                                                        <h1 class="m-0">Clientes</h1>
+                                                        <% } %>
+                                                            <% if(menu=="cadasterclient" ){ %>
+                                                                <h1 class="m-0">Cadastro Cliente</h1>
+                                                                <% } %>
 
 
                         </div><!-- /.col -->

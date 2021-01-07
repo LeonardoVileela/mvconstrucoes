@@ -1,8 +1,10 @@
 var conn = require('./../model/db')
 var users = require('./../model/users')
 var func = require('./../model/func')
+var client = require('./../model/client')
 var uploadRequire = require('./../model/upload')
 var edit = require('./../model/editemployees')
+var editCli = require('./../model/editclient')
 var express = require('express');
 var fs = require('fs');
 var router = express.Router();
@@ -37,8 +39,9 @@ router.post('/login', function (req, res, next) {
     res.redirect('/')
 
   }).catch(err => {
-    res.render('/login', {
-    })
+    res.render('login', {
+      error: 'Login ou senha incorreto'
+    });
   })
 
 })
@@ -52,6 +55,9 @@ router.get('/logout', function (req, res, next) {
 })
 
 router.get('/', function (req, res, next) {
+
+
+
 
   conn.query(
     'SELECT SUM(salary) FROM func',
@@ -183,13 +189,13 @@ router.get('/employees', function (req, res, next) {
       }
     )
   }
-
-
-
-
 })
 
+
 // UPLOAD 
+
+
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/')
@@ -203,13 +209,20 @@ var upload = multer({ storage });
 router.post('/upload', upload.single('avatar'), function (req, res, next) {
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
+  if (req.get('Referrer') != undefined) {
+    url = req.get('Referrer').toString()
+    url = url.split('/')
+    var previousUrl = url[url.length - 1];
+    previousUrl = '/' + previousUrl
+  }
 
   uploadRequire.uploadArchive(req.file.originalname, req.query.v).then(results => {
-    console.log('True')
-    res.redirect("/employees")
+    console.log('True')  
+      res.redirect(previousUrl)
+
   }).catch(err => {
     console.log(err)
-    res.redirect("/employees")
+    res.redirect(previousUrl)
   })
 
 })
@@ -222,7 +235,7 @@ router.get('/documents', function (req, res, next) {
 })
 
 router.get('/delete', function (req, res, next) {
-  
+
   fs.unlinkSync("/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/" + req.query.file)
 
   conn.query(
@@ -231,15 +244,128 @@ router.get('/delete', function (req, res, next) {
       if (err) {
         console.log(err);
       } else {
-        res.redirect("/employees")
+        if (req.get('Referrer') != undefined) {
+          url = req.get('Referrer').toString()
+          url = url.split('/')
+          var previousUrl = url[url.length - 1];
+          previousUrl = '/' + previousUrl
+        }
+        res.redirect(previousUrl)
+      }
+    }
+  );
+})
+
+
+
+
+router.get('/cadasterclient', function (req, res, next) {
+
+  res.render('cadasterclient', {
+    active: 'cadasterclient',
+    menu: 'cadasterclient'
+  });
+
+})
+router.post('/cadasterclient', function (req, res, next) {
+
+  client.postClient(req.body).then(results => {
+    res.render('cadasterclient', {
+      success: 'Cadastro realizado com sucesso',
+      active: 'cadasterclient',
+      menu: 'cadasterclient'
+    })
+  }).catch(err => {
+    res.render('cadasterclient', {
+      error: err.toString(),
+      active: 'cadasterclient',
+      menu: 'cadasterclient'
+    })
+  })
+})
+
+router.get('/editclient', function (req, res, next) {
+
+  conn.query(
+    'SELECT * FROM client WHERE cpf = "' + req.query.v + '";',
+    function (err, results) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render('editclient', {
+          active: 'editclient',
+          menu: 'editclient',
+          edit: results
+        });
       }
     }
   );
 
+})
 
+router.post('/editclient', function (req, res, next) {
+  editCli.editClient(req.query.v, req.body).then(results => {
+    console.log('FUNCINOUUUUUU')
+    res.redirect("/clients")
+
+  }).catch(err => {
+    console.log(err)
+    res.redirect("/clients")
+  })
 
 
 })
+
+
+router.get('/clients', function (req, res, next) {
+
+  if (req.query.v == undefined) {
+    conn.query(
+      'SELECT * FROM client ORDER BY name;',
+      function (err, results) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render('clients', {
+            active: 'clients',
+            menu: 'clients',
+            cli: results,
+            files: "not"
+          });
+        }
+      }
+    );
+
+  } else {
+    conn.query(
+      'SELECT * FROM client ORDER BY name;',
+      function (err, results) {
+        if (err) {
+          console.log(err);
+        } else {
+          conn.query(
+            'SELECT * FROM files WHERE cpf = "' + req.query.v + '";',
+            function (err, resultado) {
+              if (err) {
+                console.log(err);
+              } else {
+                res.render('clients', {
+                  active: 'clients',
+                  menu: 'clients',
+                  cli: results,
+                  files: resultado
+                });
+              }
+            }
+          )
+        }
+      }
+    )
+  }
+})
+
+
+
 
 module.exports = router;
 
