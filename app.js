@@ -13,7 +13,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+/*
 var options = {
   host: 'localhost',
   port: 3306,
@@ -21,6 +21,16 @@ var options = {
   password: '',
   database: 'session'
 };
+*/
+
+var options = {
+  host: 'mysql742.umbler.com',
+  port: 3306,
+  user: 'db-root',
+  password: 'leo91167213',
+  database: 'session'
+};
+
 
 var sessionStore = new MySQLStore(options);
 
@@ -31,6 +41,16 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
+function requireHTTPS(req, res, next) {
+  // The 'x-forwarded-proto' check is for Heroku
+  if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== "development") {
+    return res.redirect('https://' + req.get('host') + req.url);
+  }
+  next();
+}
+
+app.use(requireHTTPS);
 
 app.use(logger('dev'));
 app.use(express.json());

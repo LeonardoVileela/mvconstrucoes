@@ -9,7 +9,8 @@ var express = require('express');
 var fs = require('fs');
 var router = express.Router();
 var multer = require('multer')
-var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
+//var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
+var upload = multer({ dest: '/usr/src/app/model/documents/' })
 
 router.use(function (req, res, next) {
 
@@ -198,7 +199,8 @@ router.get('/employees', function (req, res, next) {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/')
+    //cb(null, '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/')
+    cb(null, '/usr/src/app/model/documents/')
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -231,13 +233,14 @@ router.post('/upload', upload.single('avatar'), function (req, res, next) {
 
 
 router.get('/documents', function (req, res, next) {
-  res.download("/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/" + req.query.file)
+  //res.download("/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/" + req.query.file)
+  res.download("/usr/src/app/model/documents/" + req.query.file)
 })
 
 router.get('/delete', function (req, res, next) {
 
-  fs.unlinkSync("/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/" + req.query.file)
-
+  //fs.unlinkSync("/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/" + req.query.file)
+  fs.unlinkSync("/usr/src/app/model/documents/" + req.query.file)
   conn.query(
     'DELETE FROM files WHERE files.file ="' + req.query.file + '";',
     function (err, results) {
@@ -363,8 +366,6 @@ router.get('/clients', function (req, res, next) {
     )
   }
 })
-
-
 
 
 module.exports = router;

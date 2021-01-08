@@ -24,9 +24,9 @@
                             </td>
                             <td>
                                 <div id="icons-table-employees">
-                                    <a id="edit-button" href="/editclient?v=<%=row.cpf%>"><i
+                                    <a title="Editar Dados Do Cliente" id="edit-button" href="/editclient?v=<%=row.cpf%>"><i
                                             class="fas fa-edit"></i></a>
-                                    <a id="upload-button" href="?v=<%=row.cpf%>"><i class="fas fa-upload"></i></a>
+                                    <a title="Upload De Arquivos" id="upload-button" href="?v=<%=row.cpf%>"><i class="fas fa-upload"></i></a>
                                 </div>
                             </td>
 
@@ -56,7 +56,7 @@
                                     rel="noopener noreferrer">
                                     <%= row.file %>
                                 </a>
-                                <a onclick="messegeDelete('<%= row.file  %>')" id="trash-icon-file"><i
+                                <a title="Apagar Arquivo" onclick="messegeDelete('<%= row.file  %>')" id="trash-icon-file"><i
                                         class="fas fa-trash-alt pointer"></i></a><br>
                             </div>
                             <% }) %>
