@@ -7,7 +7,7 @@ const session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session);
 var indexRouter = require('./routes/index');
 var app = express();
-var db = require('./model/db')
+var db = require('./model/dbsession')
 
 
 setInterval(function () {
