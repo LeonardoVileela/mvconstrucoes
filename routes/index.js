@@ -1,5 +1,4 @@
 var conn = require('./../model/db')
-var connect = require('./../model/dbsession')
 var users = require('./../model/users')
 var func = require('./../model/func')
 var client = require('./../model/client')
@@ -20,17 +19,6 @@ router.use(function (req, res, next) {
   } else {
     next()
   }
-
-  connect.query(
-    'SELECT *;',
-    function (err, results) {
-      if (err) {
-        console.log(err);
-      } 
-    }
-  );
-
-  
 
 })
 
