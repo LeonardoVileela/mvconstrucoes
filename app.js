@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session);
-var connect = require('./../model/dbsession')
+var connect = require('./model/dbsession')
 
 connect.query(
   'SELECT *;',
