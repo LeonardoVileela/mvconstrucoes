@@ -1,4 +1,5 @@
 var conn = require('./../model/db')
+var connect = require('./../model/dbsession')
 var users = require('./../model/users')
 var func = require('./../model/func')
 var client = require('./../model/client')
@@ -12,8 +13,6 @@ var multer = require('multer')
 //var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
 var upload = multer({ dest: '/usr/src/app/model/documents/' })
 
-const mysql = require('mysql2');
-
 router.use(function (req, res, next) {
 
   if (['/login'].indexOf(req.url) == -1 && !req.session.user) {
@@ -22,38 +21,16 @@ router.use(function (req, res, next) {
     next()
   }
 
-  var options = {
-    host: 'mysql742.umbler.com',
-    port: 3306,
-    user: 'db-root',
-    password: 'leo91167213',
-    database: 'session'
-  };
+  connect.query(
+    'SELECT *;',
+    function (err, results) {
+      if (err) {
+        console.log(err);
+      } 
+    }
+  );
 
-  var connection;
-
-  function handleDisconnect() {
-    connection = mysql.createConnection(options); // Recreate the connection, since
-    // the old one cannot be reused.
-
-    connection.connect(function (err) {              // The server is either down
-      if (err) {                                     // or restarting (takes a while sometimes).
-        console.log('error when connecting to db:', err);
-        setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-      }                                     // to avoid a hot loop, and to allow our node script to
-    });                                     // process asynchronous requests in the meantime.
-    // If you're also serving http, display a 503 error.
-    connection.on('error', function (err) {
-      console.log('db error', err);
-      if (err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-        handleDisconnect();                         // lost due to either server restart, or a
-      } else {                                      // connnection idle timeout (the wait_timeout
-        throw err;                                  // server variable configures this)
-      }
-    });
-  }
-
-  handleDisconnect();
+  
 
 })
 

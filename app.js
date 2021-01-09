@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session);
-const mysql = require('mysql2');
 
 var indexRouter = require('./routes/index');
 var app = express();
@@ -14,6 +13,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 /*
 var options = {
   host: 'localhost',
