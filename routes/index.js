@@ -12,12 +12,15 @@ var multer = require('multer')
 //var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
 var upload = multer({ dest: '/usr/src/app/model/documents/' })
 
-var app = express();
-const session = require('express-session')
-var MySQLStore = require('express-mysql-session')(session);
-
+const mysql = require('mysql2');
 
 router.use(function (req, res, next) {
+
+  if (['/login'].indexOf(req.url) == -1 && !req.session.user) {
+    res.redirect("/login")
+  } else {
+    next()
+  }
 
   var options = {
     host: 'mysql742.umbler.com',
@@ -27,17 +30,7 @@ router.use(function (req, res, next) {
     database: 'session'
   };
 
-  var sessionStore = new MySQLStore(options);
-
-  app.use(session({
-    key: 'yuumi',
-    secret: 'yuumi',
-    store: sessionStore,
-    resave: true,
-    saveUninitialized: true
-  }));
-
-  /*var connection;
+  var connection;
 
   function handleDisconnect() {
     connection = mysql.createConnection(options); // Recreate the connection, since
@@ -46,7 +39,7 @@ router.use(function (req, res, next) {
     connection.connect(function (err) {              // The server is either down
       if (err) {                                     // or restarting (takes a while sometimes).
         console.log('error when connecting to db:', err);
-        setTimeout(handleDisconnect, 3000); // We introduce a delay before attempting to reconnect,
+        setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
       }                                     // to avoid a hot loop, and to allow our node script to
     });                                     // process asynchronous requests in the meantime.
     // If you're also serving http, display a 503 error.
@@ -60,13 +53,7 @@ router.use(function (req, res, next) {
     });
   }
 
-  handleDisconnect();*/
-
-  if (['/login'].indexOf(req.url) == -1 && !req.session.user) {
-    res.redirect("/login")
-  } else {
-    next()
-  }
+  handleDisconnect();
 
 })
 
