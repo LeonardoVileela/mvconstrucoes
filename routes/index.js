@@ -14,6 +14,39 @@ var upload = multer({ dest: '/usr/src/app/model/documents/' })
 
 router.use(function (req, res, next) {
 
+  var options = {
+    host: 'mysql742.umbler.com',
+    port: 3306,
+    user: 'db-root',
+    password: 'leo91167213',
+    database: 'session'
+  };
+
+  var connection;
+
+  function handleDisconnect() {
+    connection = mysql.createConnection(options); // Recreate the connection, since
+    // the old one cannot be reused.
+
+    connection.connect(function (err) {              // The server is either down
+      if (err) {                                     // or restarting (takes a while sometimes).
+        console.log('error when connecting to db:', err);
+        setTimeout(handleDisconnect, 3000); // We introduce a delay before attempting to reconnect,
+      }                                     // to avoid a hot loop, and to allow our node script to
+    });                                     // process asynchronous requests in the meantime.
+    // If you're also serving http, display a 503 error.
+    connection.on('error', function (err) {
+      console.log('db error', err);
+      if (err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+        handleDisconnect();                         // lost due to either server restart, or a
+      } else {                                      // connnection idle timeout (the wait_timeout
+        throw err;                                  // server variable configures this)
+      }
+    });
+  }
+
+  handleDisconnect();
+
   if (['/login'].indexOf(req.url) == -1 && !req.session.user) {
     res.redirect("/login")
   } else {
@@ -219,8 +252,8 @@ router.post('/upload', upload.single('avatar'), function (req, res, next) {
   }
 
   uploadRequire.uploadArchive(req.file.originalname, req.query.v).then(results => {
-    console.log('True')  
-      res.redirect(previousUrl)
+    console.log('True')
+    res.redirect(previousUrl)
 
   }).catch(err => {
     console.log(err)
