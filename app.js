@@ -7,6 +7,12 @@ const session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session);
 var indexRouter = require('./routes/index');
 var app = express();
+var db = require('./model/db')
+
+
+setInterval(function () {
+  db.query('SELECT * FROM sessions');
+}, 5000);
 
 
 // view engine setup
@@ -37,8 +43,8 @@ app.use(session({
   key: 'yuumi',
   secret: 'yuumi',
   store: sessionStore,
-	resave: false,
-	saveUninitialized: false
+	resave: true,
+	saveUninitialized: true
 }));
 
 function requireHTTPS(req, res, next) {

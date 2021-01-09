@@ -30,8 +30,6 @@ router.get('/login', function (req, res, next) {
 })
 
 
-
-
 router.post('/login', function (req, res, next) {
 
   users.login(req.body.email, req.body.password).then(user => {
