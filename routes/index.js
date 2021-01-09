@@ -34,7 +34,7 @@ router.post('/login', function (req, res, next) {
 
   users.login(req.body.email, req.body.password).then(user => {
     req.session.user = user
-
+    console.log("TESTEEEEEEEEEEEEEEEEEE" + req.session.user)
     res.redirect('/')
 
   }).catch(err => {
