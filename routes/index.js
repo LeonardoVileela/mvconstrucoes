@@ -13,6 +13,7 @@ var multer = require('multer')
 var upload = multer({ dest: '/usr/src/app/model/documents/' })
 
 var app = express();
+const session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session);
 
 
