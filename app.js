@@ -22,6 +22,15 @@ var options = {
   database: 'session'
 };
 */
+
+var options = {
+  host: 'mysql742.umbler.com',
+  port: 3306,
+  user: 'db-root',
+  password: 'leo91167213',
+  database: 'session'
+};
+
 var sessionStore = new MySQLStore(options);
 
 app.use(session({
