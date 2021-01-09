@@ -2,10 +2,9 @@ const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
   host: 'mysql742.umbler.com',
-  port: 3306,
-  user: 'db-root',
+  user: 'bd-root',
   password: 'leo91167213',
-  database: 'session'
+  database: 'funcionario'
 });
 
 module.exports = connection
