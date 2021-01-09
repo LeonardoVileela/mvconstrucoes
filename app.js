@@ -7,11 +7,17 @@ const session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session);
 var indexRouter = require('./routes/index');
 var app = express();
-var db = require('./model/dbsession')
+var dbsession = require('./model/dbsession')
+var db = require('./model/db')
 
 
 setInterval(function () {
-  db.query('SELECT * FROM sessions');
+  dbsession.query('SELECT * FROM sessions');
+}, 5000);
+
+
+setInterval(function () {
+  db.query('SELECT * FROM users');
 }, 5000);
 
 
