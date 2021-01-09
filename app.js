@@ -31,15 +31,7 @@ var options = {
   database: 'session'
 };
 
-var sessionStore = new MySQLStore(options);
 
-app.use(session({
-  key: 'yuumi',
-  secret: 'yuumi',
-  store: sessionStore,
-  resave: true,
-  saveUninitialized: true
-}));
 
 function requireHTTPS(req, res, next) {
   // The 'x-forwarded-proto' check is for Heroku

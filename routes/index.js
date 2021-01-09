@@ -12,6 +12,9 @@ var multer = require('multer')
 //var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
 var upload = multer({ dest: '/usr/src/app/model/documents/' })
 
+var app = express();
+
+
 router.use(function (req, res, next) {
 
   var options = {
@@ -22,7 +25,17 @@ router.use(function (req, res, next) {
     database: 'session'
   };
 
-  var connection;
+  var sessionStore = new MySQLStore(options);
+
+  app.use(session({
+    key: 'yuumi',
+    secret: 'yuumi',
+    store: sessionStore,
+    resave: true,
+    saveUninitialized: true
+  }));
+
+  /*var connection;
 
   function handleDisconnect() {
     connection = mysql.createConnection(options); // Recreate the connection, since
@@ -45,7 +58,7 @@ router.use(function (req, res, next) {
     });
   }
 
-  handleDisconnect();
+  handleDisconnect();*/
 
   if (['/login'].indexOf(req.url) == -1 && !req.session.user) {
     res.redirect("/login")
