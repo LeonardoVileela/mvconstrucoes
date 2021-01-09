@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session);
-
 var indexRouter = require('./routes/index');
 var app = express();
 
@@ -38,8 +37,8 @@ app.use(session({
   key: 'yuumi',
   secret: 'yuumi',
   store: sessionStore,
-  resave: true,
-  saveUninitialized: true
+	resave: false,
+	saveUninitialized: false
 }));
 
 function requireHTTPS(req, res, next) {
