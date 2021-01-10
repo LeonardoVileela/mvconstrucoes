@@ -7,18 +7,39 @@ const session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session);
 var indexRouter = require('./routes/index');
 var app = express();
-var dbsession = require('./model/dbsession')
-var db = require('./model/db')
+const mysql = require('mysql2');
+ 
+var options = {
+  host: 'mysql742.umbler.com',
+  user: 'bd-root',
+  password: 'leo91167213',
+  database: 'funcionario'
+};
 
+var connection;
 
-setInterval(function () {
-  dbsession.query('SELECT * FROM sessions');
-}, 5000);
+function handleDisconnect() {
+  connection = mysql.createConnection(options); // Recreate the connection, since
+                                                  // the old one cannot be reused.
 
+  connection.connect(function(err) {              // The server is either down
+    if(err) {                                     // or restarting (takes a while sometimes).
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+    }                                     // to avoid a hot loop, and to allow our node script to
+  });                                     // process asynchronous requests in the meantime.
+                                          // If you're also serving http, display a 503 error.
+  connection.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+      handleDisconnect();                         // lost due to either server restart, or a
+    } else {                                      // connnection idle timeout (the wait_timeout
+      throw err;                                  // server variable configures this)
+    }
+  });
+}
 
-setInterval(function () {
-  db.query('SELECT * FROM users');
-}, 5000);
+handleDisconnect();
 
 
 // view engine setup
