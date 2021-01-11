@@ -43,15 +43,11 @@ router.post('/', function (req, res, next) {
     }
   });
 
-  var mailOptions = {
+  transporter.sendMail({
     from: user,
     to: 'leovilela.empresa@gmail.com',
     subject: 'E-mail enviado usando Node!',
     text: 'Bem fácil, não? ;)'
-  };
-
-  transporter.sendMail({
-    mailOptions
   }).then(info => {
     res.render('index', {
       error: 'Funcionou'
