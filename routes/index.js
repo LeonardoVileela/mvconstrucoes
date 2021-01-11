@@ -35,6 +35,8 @@ router.post('/', function (req, res, next) {
     service: 'smtp.umbler.com',
     port: 587,
     secure: true,
+    debug: true,
+    logger: true,
     auth: {
       user: 'amanda@mvconstrucoesms.com.br',
       pass: '@mvconstrucoes2021'
@@ -42,7 +44,7 @@ router.post('/', function (req, res, next) {
   });
 
   var mailOptions = {
-    from: 'amanda@mvconstrucoesms.com.br',
+    //from: 'amanda@mvconstrucoesms.com.br',
     to: 'leovilela.empresa@gmail.com',
     subject: 'E-mail enviado usando Node!',
     text: 'Bem fácil, não? ;)'
