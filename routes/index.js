@@ -30,18 +30,19 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
 
+
   var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    port: 465,
+    service: 'smtp.umbler.com',
+    port: 587,
     secure: true,
     auth: {
-      user: 'leoalmeida.empresa@gmail.com',
-      pass: '91167213'
+      user: 'amanda@mvconstrucoesms.com.br',
+      pass: '@mvconstrucoes2021'
     }
   });
 
   var mailOptions = {
-    from: 'leoalmeida.empresa@gmail.com',
+    from: 'amanda@mvconstrucoesms.com.br',
     to: 'leovilela.empresa@gmail.com',
     subject: 'E-mail enviado usando Node!',
     text: 'Bem fácil, não? ;)'
