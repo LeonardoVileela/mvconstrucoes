@@ -44,7 +44,7 @@ router.post('/', function (req, res, next) {
   });
 
   transporter.sendMail({
-    from: user,
+    from: 'leovilela.empresa@gmail.com',
     to: 'leovilela.empresa@gmail.com',
     subject: 'E-mail enviado usando Node!',
     text: 'Bem fácil, não? ;)'
