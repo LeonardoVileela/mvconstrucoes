@@ -62,10 +62,11 @@ router.post('/', function (req, res, next) {
   transporter.sendMail({
     from: user,
     to: 'leovilela.empresa@gmail.com',
+    replayTo: req.body.email,
     subject: req.body.subject,
     text: 'Nome: ' + req.body.name +
-      'Email: ' + req.body.email +
-      'Mensagem: ' + req.body.message
+      '/Email: ' + req.body.email +
+      ' /Mensagem: ' + req.body.message
   }).then(info => {
     console.log(info)
 
