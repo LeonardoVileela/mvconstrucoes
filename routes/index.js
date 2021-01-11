@@ -30,7 +30,8 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
 
   const sgMail = require('@sendgrid/mail');
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  key = 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
+  sgMail.setApiKey(process.env.key);
   const msg = {
     to: 'leoalmeida.empresa@gmail.com',
     from: 'leovilela.empresa@gmail.com', // Use the email address or domain you verified above
@@ -45,8 +46,9 @@ router.post('/', function (req, res, next) {
       console.error(error);
 
       if (error.response) {
+        erro = error.response.body
         res.render('index', {
-          error: error.response.body
+          error: erro.toString()
         })
       } else {
         res.render('index', {
