@@ -30,7 +30,7 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
 
   const sgMail = require('@sendgrid/mail');
-  key = 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
+  key = NlEatzppS12sCFipneEPdQ.CYkqi3A6CnCrsBVAaGNW75LjTJ_e1Ek1yeX8Dg1alWM
   sgMail.setApiKey(process.env.key);
   const msg = {
     to: 'leoalmeida.empresa@gmail.com',
