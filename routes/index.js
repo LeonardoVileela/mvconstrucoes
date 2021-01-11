@@ -11,7 +11,6 @@ var router = express.Router();
 var multer = require('multer')
 //var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
 var upload = multer({ dest: '/usr/src/app/model/documents/' })
-const nodemailer = require('nodemailer');
 
 router.use(function (req, res, next) {
 
@@ -30,7 +29,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
 
-  user = 'amanda@mvconstrucoes.com.br'
+  user = 'amanda@mvconstrucoesms.com.br'
   pass = '@leo91167213'
 
   var nodemailer = require('nodemailer');
@@ -46,7 +45,7 @@ router.post('/', function (req, res, next) {
 
   var mailOptions = {
     from: user,
-    to: user,
+    to: 'leovilela.empresa@gmail.com',
     subject: 'E-mail enviado usando Node!',
     text: 'Bem fácil, não? ;)'
   };
