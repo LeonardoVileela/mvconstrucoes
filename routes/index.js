@@ -45,17 +45,17 @@ router.post('/', function (req, res, next) {
 
   transporter.sendMail({
     from: user,
-    to: 'leovilela.empresa@gmail.com',
-    subject: 'E-mail enviado usando Node!',
-    text: 'Bem fácil, não? ;)'
+    to: req.body.email,
+    subject: 'Ficamos Feliz por ter você aqui!',
+    text: 'Obrigado pelo seu contato, respondermos sua mensagem o mais rápido possível'
   }).then(info => {
     res.render('index', {
-      error: 'Funcionou'
+      success: 'E-mail enviado com sucesso. Agradecemos o contato, retornaremos o mais rápido possível'
     })
 
   }).catch(error => {
     res.render('index', {
-      error: error.toString()
+      error: 'Sinto muito. O seu E-mail não foi enviado, mas estamos tentando resolver o mais rápido possível'
     })
   })
 
@@ -417,5 +417,3 @@ router.get('/clients', function (req, res, next) {
 
 
 module.exports = router;
-
-

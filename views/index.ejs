@@ -39,6 +39,11 @@
             <%= error %>
         </div>
         <% } %>
+        <% if(typeof success==='string' ){ %>
+          <div class="alert alert-success">
+              <%= success %>
+          </div>
+          <% } %>
 
       <div class="carousel-inner">
         <div class="item active" style="background-image: url(index/images/slider/1.jpg)">
