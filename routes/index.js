@@ -11,7 +11,6 @@ var router = express.Router();
 var multer = require('multer')
 //var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
 var upload = multer({ dest: '/usr/src/app/model/documents/' })
-var nodemailer = require('nodemailer');
 
 router.use(function (req, res, next) {
 
@@ -30,37 +29,31 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
 
-
-  var transporter = nodemailer.createTransport({
-    service: 'smtp.umbler.com',
-    port: 587,
-    secure: true,
-    debug: true,
-    logger: true,
-    auth: {
-      user: 'amanda@mvconstrucoesms.com.br',
-      pass: '@mvconstrucoes2021'
-    }
-  });
-
-  var mailOptions = {
-    //from: 'amanda@mvconstrucoesms.com.br',
-    to: 'leovilela.empresa@gmail.com',
-    subject: 'E-mail enviado usando Node!',
-    text: 'Bem fácil, não? ;)'
+  const sgMail = require('@sendgrid/mail');
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
+    to: 'leoalmeida.empresa@gmail.com',
+    from: 'leovilela.empresa@gmail.com', // Use the email address or domain you verified above
+    subject: 'Sending with Twilio SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   };
+  //ES6
+  sgMail
+    .send(msg)
+    .then(() => { }, error => {
+      console.error(error);
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      res.render('index', {
-        error: error.toString()
-      })
-    } else {
-      res.render('index', {
-        error: 'Funcionou'
-      })
-    }
-  });
+      if (error.response) {
+        res.render('index', {
+          error: error.response.body.toString()
+        })
+      } else {
+        res.render('index', {
+          error: 'Funcionou'
+        })
+      }
+    });
 
 })
 
