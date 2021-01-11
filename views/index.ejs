@@ -33,6 +33,13 @@
   <!--/.preloader-->
   <header id="home">
     <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+
+      <% if(typeof error==='string' ){ %>
+        <div class="alert alert-danger">
+            <%= error %>
+        </div>
+        <% } %>
+
       <div class="carousel-inner">
         <div class="item active" style="background-image: url(index/images/slider/1.jpg)">
           <div class="caption">

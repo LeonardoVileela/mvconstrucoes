@@ -50,9 +50,13 @@ router.post('/', function (req, res, next) {
 
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
-      console.log(error);
+      res.render('index', {
+        error: error.toString()
+      });
     } else {
-      console.log('Email enviado: ' + info.response);
+      res.render('index', {
+        error: 'Niceeeee'
+      });
     }
   });
 
