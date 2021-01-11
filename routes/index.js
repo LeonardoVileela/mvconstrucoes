@@ -46,7 +46,7 @@ router.post('/', function (req, res, next) {
 
       if (error.response) {
         res.render('index', {
-          error: error.response.body.toString()
+          error: error.response.body
         })
       } else {
         res.render('index', {
