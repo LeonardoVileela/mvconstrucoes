@@ -1,47 +1,488 @@
-<%- include("inc/head") -%>
-  <!-- Small boxes (Stat box) -->
-  <div class="row">
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-success">
-        <div class="inner">
-          <% cont.forEach(row=> { %>
-            <h3>
-              <%= Object.values(row)%>
-            </h3>
-            <% }) %>
-              <p>Total De Funcionários</p>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>MV CONSTRUÇÕES</title>
+  <link href="index/css/bootstrap.min.css" rel="stylesheet">
+  <link href="index/css/animate.min.css" rel="stylesheet">
+  <link href="index/css/font-awesome.min.css" rel="stylesheet">
+  <link href="index/css/lightbox.css" rel="stylesheet">
+  <link href="index/css/main.css" rel="stylesheet">
+  <link id="css-preset" href="index/css/presets/preset1.css" rel="stylesheet">
+  <link href="index/css/responsive.css" rel="stylesheet">
+
+
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="index/images/icone.png">
+</head>
+<!--/head-->
+
+<body>
+
+  <!--.preloader-->
+  <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
+  <!--/.preloader-->
+  <header id="home">
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="item active" style="background-image: url(index/images/slider/1.jpg)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig"><span>MV CONSTRUÇÕES</span></h1>
+            <p class="animated fadeInRightBig">Bases de silos - Armazéns - Moegas - Estruturas Metálicas</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Saiba Mais</a>
+          </div>
         </div>
-        <div class="icon">
-          <i class="ion ion-stats-bars"></i>
+        <div class="item" style="background-image: url(index/images/slider/2.jpg)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig"><span>MV CONSTRUÇÕES</span></h1>
+            <p class="animated fadeInRightBig">SATISFAÇÃO A CADA METRO QUADRADO</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Saiba Mais</a>
+          </div>
         </div>
-        <a class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+        <div class="item" style="background-image: url(index/images/slider/1.jpg)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig"><span>MV CONSTRUÇÕES</span></h1>
+            <p class="animated fadeInRightBig">PRESENTE EM TODO CENTRO-OESTE</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Saiba Mais</a>
+          </div>
+        </div>
+      </div>
+      <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+      <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+
+      <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
+
+    </div>
+    <!--/#home-slider-->
+    <div class="main-nav">
+      <div class="container">
+        <div class="navbar-header">
+          <button id="buttonMenu" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.php">
+            <h1><img class="img-responsive" src="index/images/logo.png" alt="logo"></h1>
+          </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="scroll active"><a onclick="menu()" href="#home">Home</a></li>
+            <li class="scroll"><a onclick="menu()" href="#services">Serviços</a></li>
+            <li class="scroll"><a onclick="menu()" href="#about-us">Sobre Nós</a></li>
+            <li class="scroll"><a onclick="menu()" href="#portfolio">Portfolio</a></li>
+            <li class="scroll"><a onclick="menu()" href="#contact">Contato</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-danger">
-        <div class="inner">
-          <% contSalary.forEach(row=> { %>
-            <% if(parseFloat(Object.values(row)).toFixed(2)== 'NaN'){ %>
-              <h3>0</h3>
-              <% } else{ %>
-                <h3>
-                  <%= parseFloat(Object.values(row)).toFixed(2)%>
-                </h3>
-                <% }}) %>
-                  <p>Total De Sálarios</p>
+    <!--/#main-nav-->
+  </header>
+  <!--/#home-->
+  <section id="services">
+    <div class="container">
+      <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="row">
+          <div class="text-center col-sm-8 col-sm-offset-2">
+            <h2>Nossos Serviços</h2>
+          </div>
         </div>
-        <div class="icon">
-          <i class="ion ion-pie-graph"></i>
+      </div>
+      <div class="text-center our-services">
+        <div class="row">
+          <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="service-icon">
+              <i class="fa fa-bullseye"></i>
+            </div>
+            <div class="service-info">
+              <h3>BASES DE SILOS</h3>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="450ms">
+            <div class="service-icon">
+              <img class="icon-export" src="index/icon/armazem.png"></imgs>
+            </div>
+            <div class="service-info">
+              <h3>ARMAZÉNS</h3>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="550ms">
+            <div class="service-icon">
+              <img class="icon-export" src="index/icon/moega.png"></imgs>
+            </div>
+            <div class="service-info">
+              <h3>MOEGAS</h3>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="650ms">
+            <div class="service-icon">
+              <img class="icon-export" src="index/icon/metal.png"></imgs>
+            </div>
+            <div class="service-info">
+              <h3>ESTRUTURAS METÁLICAS</h3>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="750ms">
+            <div class="service-icon">
+              <i class="fa fa-bolt"></i>
+            </div>
+            <div class="service-info">
+              <h3>INSTALAÇÕES ELÉTRICAS</h3>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="850ms">
+            <div class="service-icon">
+              <i class="fa fa-circle"></i>
+            </div>
+            <div class="service-info">
+              <h3>BASES DE SECADORES</h3>
+            </div>
+          </div>
         </div>
-        <a class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
-    <!-- ./col -->
-  </div>
-  <!-- /.row -->
+  </section>
+  <!--/#services-->
 
-  <%- include("inc/footer") -%>
+
+  <section id="about-us" class="parallax">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="about-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h2>Sobre Nós</h2>
+            <p>A MV CONSTRUÇÕES oferece soluções diferenciadas no mercado da construção civil, buscando a
+              satisfação de seus clientes e colaboradores fornecendo produtos e serviços de mão de obra com qualidade e
+              segurança.</p>
+            <p>Executamos todos os tipos de bases de silos em concreto armado, fundo plano, elevados, totalmente
+              perfurados, fundo cônico, moegas de grãos, armazéns e estruturas metálicas.</p>
+            <p>Nossos maiores valores são: agilidade, comprometimento, credibilidade, flexibilidade, qualidade e preço
+              justo.</p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="our-skills wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+              <p class="lead">Agilidade</p>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="100">100%</div>
+              </div>
+            </div>
+            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
+              <p class="lead">Credibilidade</p>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="100">100%</div>
+              </div>
+            </div>
+            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+              <p class="lead">Qualidade</p>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="100">100%</div>
+              </div>
+            </div>
+            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+              <p class="lead">Comprometimento</p>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="100">100%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/#about-us-->
+
+  <section id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+          <h2>Nosso Portfolio</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="index/images/portfolio/1.jpg" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>Moega de Grãos</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="index/images/portfolio/2.jpg" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>Base de Silo Armazenador</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="500ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="index/images/portfolio/3.jpg" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>Terraplanagem</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="index/images/portfolio/4.jpg" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>Base de Secador</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="700ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="index/images/portfolio/5.jpg" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>Base de Secador</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="800ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="index/images/portfolio/6.jpg" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>Base de Tombador</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="900ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="index/images/portfolio/7.jpg" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>Balança Rodoviária</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="1000ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="index/images/portfolio/8.jpg" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>Túnel da Moega de Grãos</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="portfolio-single-wrap">
+      <div id="portfolio-single">
+      </div>
+    </div><!-- /#portfolio-single-wrap -->
+  </section>
+  <!--/#portfolio-->
+
+  <section id="features" class="parallax">
+    <div class="container">
+      <div class="row count">
+        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
+          <i class="fa fa-user"></i>
+          <p>CLIENTE SATISFEITO</p>
+        </div>
+        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+          <i class="fa fa-desktop"></i>
+          <p>MODERNIDADE</p>
+        </div>
+        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="700ms">
+          <i class="fa fa-trophy"></i>
+          <p>QUALIDADE</p>
+        </div>
+        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="900ms">
+          <i class="fa fa-comment-o"></i>
+          <p>SUPORTE</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/#features-->
+
+  <section id="contact">
+    <div id="contact-us" class="parallax">
+      <div class="container">
+        <div class="row">
+          <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h2>Contato</h2>
+            <p>Digite suas informações e clique no botão de "enviar" e entraremos em contato o mais breve possível</p>
+          </div>
+        </div>
+
+
+        <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+          <div class="row">
+            <div class="col-sm-6">
+              <form name="contact-form" method="post" action="sendemail.php">
+                <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="name" class="form-control" placeholder="Nome" required="required">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control" placeholder="Seu E-mail" required="required">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="subject" class="form-control" placeholder="Assunto" required="required">
+                </div>
+                <div class="form-group">
+                  <textarea name="message" id="message" class="form-control" rows="4" placeholder="Digite sua mensagem" required="required"></textarea>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn-submit">Enviar</button>
+                </div>
+              </form>
+            </div>
+
+
+
+            <div class="col-sm-6">
+              <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <ul class="address">
+                  <li><i class="fa fa-map-marker"></i> <span> Endereço:</span> Rua Leonel Velasco, 15 - Res. Oliveira. Campo Grande MS</li>
+                  <li><i class="fa fa-phone"></i> <span> Telefone:</span> (67) 99960-2168</li>
+                  <li><i class="fa fa-envelope"></i> <span> Email:</span> mvconstrucoesms@gmail.com</a></li>
+                  <li><i class="fa fa-globe"></i> <span> Website:</span> <a href="#">www.mvconstrucoesms.com.br</a></li>
+                </ul>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/#contact-->
+  <footer id="footer">
+    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+      <div class="container text-center">
+        <div class="footer-logo">
+          <a href="index.php"><img class="img-responsive" src="index/images/logo.png" alt=""></a>
+        </div>
+        <div class="social-icons">
+          <ul>
+
+            <li><a class="facebook" href="https://www.instagram.com/mvconstrucoesms/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>&copy; 2020 MV CONSTRUÇÕES.</p>
+          </div>
+          <div class="col-sm-6">
+            <p class="pull-right">Leonardo Vilela</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="index/js/jquery.js"></script>
+  <script type="text/javascript" src="index/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="index/js/jquery.inview.min.js"></script>
+  <script type="text/javascript" src="index/js/wow.min.js"></script>
+  <script type="text/javascript" src="index/js/mousescroll.js"></script>
+  <script type="text/javascript" src="index/js/smoothscroll.js"></script>
+  <script type="text/javascript" src="index/js/jquery.countTo.js"></script>
+  <script type="text/javascript" src="index/js/lightbox.min.js"></script>
+  <script type="text/javascript" src="index/js/main.js"></script>
+
+  <script>
+    function menu() {
+      var largura_tela = $(window).width();
+      if (largura_tela < 760) {
+        document.getElementById('buttonMenu').click()
+      };
+    }
+  </script>
+
+</body>
+
+</html>

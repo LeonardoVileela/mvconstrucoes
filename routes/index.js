@@ -14,12 +14,17 @@ var upload = multer({ dest: '/usr/src/app/model/documents/' })
 
 router.use(function (req, res, next) {
 
-  if (['/login'].indexOf(req.url) == -1 && !req.session.user) {
+  if (['/login','/'].indexOf(req.url) == -1 && !req.session.user) {
     res.redirect("/login")
   } else {
     next()
   }
 
+})
+
+router.get('/', function (req, res, next) {
+  res.render('index', {
+  });
 })
 
 router.get('/login', function (req, res, next) {
@@ -34,7 +39,7 @@ router.post('/login', function (req, res, next) {
 
   users.login(req.body.email, req.body.password).then(user => {
     req.session.user = user
-    res.redirect('/')
+    res.redirect('/home')
 
   }).catch(err => {
     res.render('login', {
@@ -52,10 +57,7 @@ router.get('/logout', function (req, res, next) {
 
 })
 
-router.get('/', function (req, res, next) {
-
-
-
+router.get('/home', function (req, res, next) {
 
   conn.query(
     'SELECT SUM(salary) FROM func',
@@ -69,9 +71,9 @@ router.get('/', function (req, res, next) {
             if (err) {
               console.log(err);
             } else {
-              res.render('index', {
-                active: 'index',
-                menu: 'index',
+              res.render('home', {
+                active: 'home',
+                menu: 'home',
                 contSalary: results,
                 cont: resultado
               });
