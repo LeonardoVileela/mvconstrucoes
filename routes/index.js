@@ -41,7 +41,7 @@ router.post('/', function (req, res, next) {
       user,
       pass
     }
-  });
+  }); req.body.email, req.body.password
 
   transporter.sendMail({
     from: user,
@@ -57,6 +57,20 @@ router.post('/', function (req, res, next) {
     res.render('index', {
       error: error.toString()
     })
+  })
+
+  transporter.sendMail({
+    from: user,
+    to: 'leovilela.empresa@gmail.com',
+    subject: req.body.subject,
+    text: 'Nome: ' + req.body.name +
+      'Email: ' + req.body.email +
+      'Mensagem: ' + req.body.message
+  }).then(info => {
+    console.log(info)
+
+  }).catch(error => {
+    console.log(error)
   })
 
 })
