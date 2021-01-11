@@ -35,13 +35,13 @@ router.post('/', function (req, res, next) {
     port: 465,
     secure: true,
     auth: {
-      user: 'leovilela.empresa@gmail.com',
+      user: 'leoalmeida.empresa@gmail.com',
       pass: '91167213'
     }
   });
 
   var mailOptions = {
-    from: 'leovilela.empresa@gmail.com',
+    from: 'leoalmeida.empresa@gmail.com',
     to: 'leovilela.empresa@gmail.com',
     subject: 'E-mail enviado usando Node!',
     text: 'Bem fácil, não? ;)'
