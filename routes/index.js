@@ -28,7 +28,7 @@ router.get('/', function (req, res, next) {
   });
 })
 
-router.post('/login', function (req, res, next) {
+router.post('/', function (req, res, next) {
 
   const transporter = nodemailer.createTransport({
     host: "webmail.umbler.com",
