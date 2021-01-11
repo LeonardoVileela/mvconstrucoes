@@ -11,11 +11,11 @@ var router = express.Router();
 var multer = require('multer')
 //var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
 var upload = multer({ dest: '/usr/src/app/model/documents/' })
-const nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
 
 router.use(function (req, res, next) {
 
-  if (['/login','/'].indexOf(req.url) == -1 && !req.session.user) {
+  if (['/login', '/'].indexOf(req.url) == -1 && !req.session.user) {
     res.redirect("/login")
   } else {
     next()
@@ -30,33 +30,30 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
 
-  const transporter = nodemailer.createTransport({
-    host: "webmail.umbler.com",
-    port: 25,
-    secure: false, // true for 465, false for other ports
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
     auth: {
-      user: "amanda@mvconstrucoesms.com.br",
-      pass: "@mvconstrucoes2021"
-    },
-    tls: { rejectUnauthorized: false }
+      user: 'leovilela.empresa@gmail.com ',
+      pass: '91167213'
+    }
   });
 
-  const mailOptions = {
-    from: 'amanda@mvconstrucoesms.com.br',
+  var mailOptions = {
+    from: 'leovilela.empresa@gmail.com',
     to: 'leovilela.empresa@gmail.com',
     subject: 'E-mail enviado usando Node!',
     text: 'Bem fácil, não? ;)'
   };
 
-  transporter.sendMail(mailOptions, function(error, info){
+  transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       res.render('index', {
         error: error.toString()
-      });
+      })
     } else {
       res.render('index', {
-        error: 'Niceeeee'
-      });
+        error: 'Funcionou'
+      })
     }
   });
 
