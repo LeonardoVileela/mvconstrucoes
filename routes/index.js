@@ -11,6 +11,7 @@ var router = express.Router();
 var multer = require('multer')
 //var upload = multer({ dest: '/home/yummi/Área de trabalho/Projeto/funcionario/model/documents/' })
 var upload = multer({ dest: '/usr/src/app/model/documents/' })
+const nodemailer = require('nodemailer');
 
 router.use(function (req, res, next) {
 
@@ -25,6 +26,36 @@ router.use(function (req, res, next) {
 router.get('/', function (req, res, next) {
   res.render('index', {
   });
+})
+
+router.post('/login', function (req, res, next) {
+
+  const transporter = nodemailer.createTransport({
+    host: "webmail.umbler.com",
+    port: 25,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: "amanda@mvconstrucoesms.com.br",
+      pass: "@mvconstrucoes2021"
+    },
+    tls: { rejectUnauthorized: false }
+  });
+
+  const mailOptions = {
+    from: 'amanda@mvconstrucoesms.com.br',
+    to: 'leovilela.empresa@gmail.com',
+    subject: 'E-mail enviado usando Node!',
+    text: 'Bem fácil, não? ;)'
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email enviado: ' + info.response);
+    }
+  });
+
 })
 
 router.get('/login', function (req, res, next) {
