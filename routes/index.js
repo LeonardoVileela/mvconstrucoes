@@ -29,7 +29,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
 
-  user = 'amanda@mvconstrucoesms.com.br'
+  user = 'mvconstrucoes@mvconstrucoesms.com.br'
   pass = '@leo91167213'
 
   var nodemailer = require('nodemailer');
