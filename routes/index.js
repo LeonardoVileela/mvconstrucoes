@@ -47,15 +47,15 @@ router.post('/', function (req, res, next) {
     from: user,
     to: req.body.email,
     subject: 'Ficamos Feliz por ter você aqui!',
-    text: 'Obrigado pelo seu contato, respondermos sua mensagem o mais rápido possível'
+    text: 'Obrigado pelo seu contato, responderemos sua mensagem o mais rápido possível.'
   }).then(info => {
     res.render('index', {
-      success: 'E-mail enviado com sucesso. Agradecemos o contato, retornaremos o mais rápido possível'
+      success: 'E-mail enviado com sucesso. Agradecemos o contato, retornaremos o mais rápido possível.'
     })
 
   }).catch(error => {
     res.render('index', {
-      error: 'Sinto muito. O seu E-mail não foi enviado, mas estamos tentando resolver o mais rápido possível'
+      error: 'Sinto muito. O seu E-mail não foi enviado, mas estamos tentando resolver o mais rápido possível.'
     })
   })
 
