@@ -536,68 +536,69 @@
       if (largura_tela < 760) {
         click = 700
       }
+      if (cont == 3) {
+        cont = 0
+      }
+      if (cont == 0) {
+        cont++
+        document.getElementById("img1").src = "index/images/portfolio/1.jpg";
+        document.getElementById("img1").alt = "Moega de Grãos";
+        document.getElementById("img2").src = "index/images/portfolio/2.jpg";
+        document.getElementById("img2").alt = "Base de Silo Armazenador";
+        document.getElementById("img3").src = "index/images/portfolio/3.jpg";
+        document.getElementById("img3").alt = "Terraplanagem";
+        document.getElementById("img4").src = "index/images/portfolio/4.jpg";
+        document.getElementById("img4").alt = "Base de Secador";
+        document.getElementById("img5").src = "index/images/portfolio/5.jpg";
+        document.getElementById("img5").alt = "Base de Secador";
+        document.getElementById("img6").src = "index/images/portfolio/6.jpg";
+        document.getElementById("img6").alt = "Base de Tombador";
+        document.getElementById("img7").src = "index/images/portfolio/7.jpg";
+        document.getElementById("img7").alt = "Balança Rodoviária";
+        document.getElementById("img8").src = "index/images/portfolio/8.jpg";
+        document.getElementById("img8").alt = "Túnel da Moega de Grãos";
+      } else if (cont == 1) {
+        cont++
+        document.getElementById("img1").src = "index/images/portfolio/9.jpg";
+        document.getElementById("img1").alt = "Moega de Grãos";
+        document.getElementById("img2").src = "index/images/portfolio/10.jpg";
+        document.getElementById("img2").alt = "";
+        document.getElementById("img3").src = "index/images/portfolio/11.jpg";
+        document.getElementById("img3").alt = "Silos";
+        document.getElementById("img4").src = "index/images/portfolio/12.jpg";
+        document.getElementById("img4").alt = "Moega de grãos em fase de construção";
+        document.getElementById("img5").src = "index/images/portfolio/13.jpg";
+        document.getElementById("img5").alt = "Moega de Grãos";
+        document.getElementById("img6").src = "index/images/portfolio/14.jpg";
+        document.getElementById("img6").alt = "Base de silo em fase de concretagem";
+        document.getElementById("img7").src = "index/images/portfolio/15.jpg";
+        document.getElementById("img7").alt = "Base para máquina de pré-limpeza";
+        document.getElementById("img8").src = "index/images/portfolio/16.jpg";
+        document.getElementById("img8").alt = "Base de silo expedição";
+      } else if (cont == 2) {
+        cont++
+        document.getElementById("img1").src = "index/images/portfolio/17.jpg";
+        document.getElementById("img1").alt = "";
+        document.getElementById("img2").src = "index/images/portfolio/18.jpg";
+        document.getElementById("img2").alt = "Base de balança rodoviária";
+        document.getElementById("img3").src = "index/images/portfolio/19.jpg";
+        document.getElementById("img3").alt = "Armadura para poço de elevador";
+        document.getElementById("img4").src = "index/images/portfolio/20.jpg";
+        document.getElementById("img4").alt = "";
+        document.getElementById("img5").src = "index/images/portfolio/21.jpg";
+        document.getElementById("img5").alt = "Estrutura em concreto armado para moega de grãos";
+        document.getElementById("img6").src = "index/images/portfolio/22.jpg";
+        document.getElementById("img6").alt = "Pilares para apoio de cobertura";
+        document.getElementById("img7").src = "index/images/portfolio/23.jpg";
+        document.getElementById("img7").alt = "Base de silo armazenador";
+        document.getElementById("img8").src = "index/images/portfolio/24.jpg";
+        document.getElementById("img8").alt = "Fundação do tipo estacas pré-moldadas.";
+      }
+
 
       setTimeout(function () {
-        if (cont == 3) {
-          cont = 0
-        }
-        if (cont == 0) {
-          cont++
-          document.getElementById("img1").src = "index/images/portfolio/1.jpg";
-          document.getElementById("img1").alt = "Moega de Grãos";
-          document.getElementById("img2").src = "index/images/portfolio/2.jpg";
-          document.getElementById("img2").alt = "Base de Silo Armazenador";
-          document.getElementById("img3").src = "index/images/portfolio/3.jpg";
-          document.getElementById("img3").alt = "Terraplanagem";
-          document.getElementById("img4").src = "index/images/portfolio/4.jpg";
-          document.getElementById("img4").alt = "Base de Secador";
-          document.getElementById("img5").src = "index/images/portfolio/5.jpg";
-          document.getElementById("img5").alt = "Base de Secador";
-          document.getElementById("img6").src = "index/images/portfolio/6.jpg";
-          document.getElementById("img6").alt = "Base de Tombador";
-          document.getElementById("img7").src = "index/images/portfolio/7.jpg";
-          document.getElementById("img7").alt = "Balança Rodoviária";
-          document.getElementById("img8").src = "index/images/portfolio/8.jpg";
-          document.getElementById("img8").alt = "Túnel da Moega de Grãos";
-        } else if (cont == 1) {
-          cont++
-          document.getElementById("img1").src = "index/images/portfolio/9.jpg";
-          document.getElementById("img1").alt = "Moega de Grãos";
-          document.getElementById("img2").src = "index/images/portfolio/10.jpg";
-          document.getElementById("img2").alt = "";
-          document.getElementById("img3").src = "index/images/portfolio/11.jpg";
-          document.getElementById("img3").alt = "Silos";
-          document.getElementById("img4").src = "index/images/portfolio/12.jpg";
-          document.getElementById("img4").alt = "Moega de grãos em fase de construção";
-          document.getElementById("img5").src = "index/images/portfolio/13.jpg";
-          document.getElementById("img5").alt = "Moega de Grãos";
-          document.getElementById("img6").src = "index/images/portfolio/14.jpg";
-          document.getElementById("img6").alt = "Base de silo em fase de concretagem";
-          document.getElementById("img7").src = "index/images/portfolio/15.jpg";
-          document.getElementById("img7").alt = "Base para máquina de pré-limpeza";
-          document.getElementById("img8").src = "index/images/portfolio/16.jpg";
-          document.getElementById("img8").alt = "Base de silo expedição";
-        } else if (cont == 2) {
-          cont++
-          document.getElementById("img1").src = "index/images/portfolio/17.jpg";
-          document.getElementById("img1").alt = "";
-          document.getElementById("img2").src = "index/images/portfolio/18.jpg";
-          document.getElementById("img2").alt = "Base de balança rodoviária";
-          document.getElementById("img3").src = "index/images/portfolio/19.jpg";
-          document.getElementById("img3").alt = "Armadura para poço de elevador";
-          document.getElementById("img4").src = "index/images/portfolio/20.jpg";
-          document.getElementById("img4").alt = "";
-          document.getElementById("img5").src = "index/images/portfolio/21.jpg";
-          document.getElementById("img5").alt = "Estrutura em concreto armado para moega de grãos";
-          document.getElementById("img6").src = "index/images/portfolio/22.jpg";
-          document.getElementById("img6").alt = "Pilares para apoio de cobertura";
-          document.getElementById("img7").src = "index/images/portfolio/23.jpg";
-          document.getElementById("img7").alt = "Base de silo armazenador";
-          document.getElementById("img8").src = "index/images/portfolio/24.jpg";
-          ocument.getElementById("img7").alt = "Fundação do tipo estacas pré-moldadas.";
-        }
-
-      }, 10);
+        
+      }, 100);
       setTimeout(function () {
         condition = false
         refreshButton = document.getElementById('refresh')
