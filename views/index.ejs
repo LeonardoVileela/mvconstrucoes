@@ -530,12 +530,7 @@
     }
 
     function refresh() {
-      new WOW().init();
-      var click = 0
-      var largura_tela = $(window).width();
-      if (largura_tela < 760) {
-        click = 700
-      }
+
       if (cont == 3) {
         cont = 0
       }
@@ -594,11 +589,18 @@
         document.getElementById("img8").src = "index/images/portfolio/24.jpg";
         document.getElementById("img8").alt = "Fundação do tipo estacas pré-moldadas.";
       }
+      new WOW().init();
+      var click = 0
+      var largura_tela = $(window).width();
+      if (largura_tela < 760) {
+        click = 700
+      }
+      
 
 
-      setTimeout(function () {
+      /*setTimeout(function () {
         
-      }, 100);
+      }, 100);*/
       setTimeout(function () {
         condition = false
         refreshButton = document.getElementById('refresh')
