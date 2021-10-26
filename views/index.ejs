@@ -15,6 +15,10 @@
   <link id="css-preset" href="index/css/presets/preset1.css" rel="stylesheet">
   <link href="index/css/responsive.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
+  <link href="chat.css" rel="stylesheet">
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+  
 
 
   <!--[if lt IE 9]>
@@ -28,6 +32,27 @@
 <!--/head-->
 
 <body>
+
+  <div class="chatBot">
+    <button class="chat-btn">
+        <i class="material-icons"> comment </i>
+    </button>
+
+    <div class="chat-popup">
+        <div class="chat-area">
+            <div class="income-msg">
+                <span class="msg"> Oi meu nome é Yuumi, como posso ajudar?</span>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 25px;" class="input-area">
+            <input id="inputChat" type="text">
+            <button id="buttonSend" onclick="mensagem()" class="submit"> <i class="material-icons">
+                    send</i></button>
+        </div>
+    </div>
+  </div>
 
   <!--.preloader-->
   <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
@@ -103,6 +128,8 @@
     </div>
     <!--/#main-nav-->
   </header>
+
+
   <!--/#home-->
   <section id="services">
     <div class="container">
@@ -411,6 +438,8 @@
       </div>
     </div>
   </section>
+
+
   <!--/#contact-->
   <footer id="footer">
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
@@ -442,6 +471,8 @@
     </div>
   </footer>
 
+  
+
   <script type="text/javascript" src="index/js/jquery.js"></script>
   <script type="text/javascript" src="index/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="index/js/jquery.inview.min.js"></script>
@@ -451,6 +482,66 @@
   <script type="text/javascript" src="index/js/jquery.countTo.js"></script>
   <script type="text/javascript" src="index/js/lightbox.min.js"></script>
   <script type="text/javascript" src="index/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+  <script src="main.js"></script>
+
+  <script>
+
+      document.getElementById("inputChat")
+          .addEventListener("keyup", function (event) {
+              event.preventDefault();
+              if (event.keyCode === 13) {
+                  document.getElementById("buttonSend").click();
+              }
+          });
+
+      function mensagem() {
+
+
+          let userInput = inputElm.value;
+
+
+          let temp = `<div class="out-msg">
+              <span class="my-msg">${userInput}</span>
+              </div>`;
+
+          chatArea.insertAdjacentHTML("beforeend", temp);
+          inputElm.value = '';
+
+          //var list = document.getElementsByClassName("my-msg");
+          //var mensagem = list[list.length - 1].innerHTML
+
+
+          //console.log(mensagem)
+
+          var settings = {
+              "url": "https://optimum-door-330000.rj.r.appspot.com/" + userInput,
+              "method": "POST",
+              "timeout": 0,
+          };
+
+          $.ajax(settings).done(function (response) {
+
+              let resposta = `<div class="income-msg">
+              <span class="msg">${response.resposta}</span>
+              </div>`;
+
+              chatArea.insertAdjacentHTML("beforeend", resposta);
+              inputElm.value = '';
+
+              $(".chat-area").scrollTop($(".chat-area")[0].scrollHeight);
+
+          });
+
+
+
+
+
+      }
+
+
+  </script>
 
   <script>
     cont = 1
