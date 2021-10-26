@@ -487,8 +487,9 @@
   <script src="main.js"></script>
 
   <script>
-      //location.replace("https://mvconstrucoesms.com.br")
-      console.log(location.origin)
+      if(location.origin == 'https://www.mvconstrucoesms.com.br'){
+        location.replace("https://mvconstrucoesms.com.br")
+      }
       
       document.getElementById("inputChat")
           .addEventListener("keyup", function (event) {
@@ -498,8 +499,7 @@
               }
           });
 
-      function mensagem() {
-          
+      function mensagem() {   
 
           let userInput = inputElm.value;
 
