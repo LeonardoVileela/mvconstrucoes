@@ -453,8 +453,15 @@
   <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
   <script src="main.js"></script>
 
+
   <script>
-    if (location.origin == 'https://mvconstrucoesms.com.br' || location.origin == 'http://mvconstrucoesms.com.br' || location.origin == 'http://www.mvconstrucoesms.com.br') {
+    if (location.protocol !== 'https:') {
+      location.replace(`https:${location.href.substring(location.protocol.length)}`);
+    }
+  </script>
+
+  <script>
+    if (location.origin == 'https://mvconstrucoesms.com.br') {
       location.replace("https://www.mvconstrucoesms.com.br")
     }
 
