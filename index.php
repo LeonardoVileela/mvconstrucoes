@@ -1,3 +1,12 @@
+<?php
+if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off") {
+  $location = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  header('HTTP/1.1 301 Moved Permanently');
+  header('Location: ' . $location);
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,8 +25,7 @@
   <link href="index/css/responsive.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
   <link href="chat.css" rel="stylesheet">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
 
 
 
@@ -99,8 +107,7 @@
     <div class="main-nav">
       <div class="container">
         <div class="navbar-header">
-          <button id="buttonMenu" type="button" class="navbar-toggle" data-toggle="collapse"
-            data-target=".navbar-collapse">
+          <button id="buttonMenu" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -212,29 +219,25 @@
             <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
               <p class="lead">Agilidade</p>
               <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"
-                  aria-valuetransitiongoal="100">100%</div>
+                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="100">100%</div>
               </div>
             </div>
             <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
               <p class="lead">Credibilidade</p>
               <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"
-                  aria-valuetransitiongoal="100">100%</div>
+                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="100">100%</div>
               </div>
             </div>
             <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
               <p class="lead">Qualidade</p>
               <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"
-                  aria-valuetransitiongoal="100">100%</div>
+                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="100">100%</div>
               </div>
             </div>
             <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
               <p class="lead">Comprometimento</p>
               <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"
-                  aria-valuetransitiongoal="100">100%</div>
+                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="100">100%</div>
               </div>
             </div>
           </div>
@@ -260,8 +263,7 @@
   <section id="portfolio" style="padding-bottom: 30px;">
     <div class="container">
       <div class="row">
-        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms"
-          data-wow-delay="300ms">
+        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
           <h2>Nosso Portfolio</h2>
         </div>
       </div>
@@ -271,64 +273,56 @@
         <div class="col-sm-3">
           <div id="testnice" class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
             <div class="folio-image">
-              <img class="imageModal" id="img1" class="img-responsive" src="index/images/portfolio/1.jpg"
-                alt="Moega de Grãos">
+              <img class="imageModal" id="img1" class="img-responsive" src="index/images/portfolio/1.jpg" alt="Moega de Grãos">
             </div>
           </div>
         </div>
         <div class="col-sm-3">
           <div id="testnice" class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
             <div class="folio-image">
-              <img style="cursor: pointer;" onclick="modalImg()" class="imageModal" id="img2" class="img-responsive"
-                src="index/images/portfolio/2.jpg" alt="Base de Silo Armazenador">
+              <img style="cursor: pointer;" onclick="modalImg()" class="imageModal" id="img2" class="img-responsive" src="index/images/portfolio/2.jpg" alt="Base de Silo Armazenador">
             </div>
           </div>
         </div>
         <div class="col-sm-3">
           <div id="testnice" class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="500ms">
             <div class="folio-image">
-              <img class="imageModal" id="img3" class="img-responsive" src="index/images/portfolio/3.jpg"
-                alt="Terraplanagem">
+              <img class="imageModal" id="img3" class="img-responsive" src="index/images/portfolio/3.jpg" alt="Terraplanagem">
             </div>
           </div>
         </div>
         <div class="col-sm-3">
           <div id="testnice" class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="600ms">
             <div class="folio-image">
-              <img class="imageModal" id="img4" class="img-responsive" src="index/images/portfolio/4.jpg"
-                alt="Base de Secador">
+              <img class="imageModal" id="img4" class="img-responsive" src="index/images/portfolio/4.jpg" alt="Base de Secador">
             </div>
           </div>
         </div>
         <div class="col-sm-3">
           <div id="testnice" class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="700ms">
             <div class="folio-image">
-              <img class="imageModal" id="img5" class="img-responsive" src="index/images/portfolio/5.jpg"
-                alt="Base de Secador">
+              <img class="imageModal" id="img5" class="img-responsive" src="index/images/portfolio/5.jpg" alt="Base de Secador">
             </div>
           </div>
         </div>
         <div class="col-sm-3">
           <div id="testnice" class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="800ms">
             <div class="folio-image">
-              <img class="imageModal" id="img6" class="img-responsive" src="index/images/portfolio/6.jpg"
-                alt="Base de Tombador">
+              <img class="imageModal" id="img6" class="img-responsive" src="index/images/portfolio/6.jpg" alt="Base de Tombador">
             </div>
           </div>
         </div>
         <div class="col-sm-3">
           <div id="testnice" class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="900ms">
             <div class="folio-image">
-              <img class="imageModal" id="img7" class="img-responsive" src="index/images/portfolio/7.jpg"
-                alt="Balança Rodoviária">
+              <img class="imageModal" id="img7" class="img-responsive" src="index/images/portfolio/7.jpg" alt="Balança Rodoviária">
             </div>
           </div>
         </div>
         <div class="col-sm-3">
           <div id="testnice" class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="1000ms">
             <div class="folio-image">
-              <img class="imageModal" id="img8" class="img-responsive" src="index/images/portfolio/8.jpg"
-                alt="Túnel da Moega de Grãos">
+              <img class="imageModal" id="img8" class="img-responsive" src="index/images/portfolio/8.jpg" alt="Túnel da Moega de Grãos">
             </div>
           </div>
         </div>
@@ -342,8 +336,7 @@
   <!--/#portfolio-->
 
   <div style="text-align: center;" class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="700ms">
-    <button onclick="refresh()" href="#portfolio" style="border-radius: 10px; outline: none;" type="button"
-      class="btn btn-primary btn-lg">Ver Mais Fotos <i class="fa fa-refresh"></i></button>
+    <button onclick="refresh()" href="#portfolio" style="border-radius: 10px; outline: none;" type="button" class="btn btn-primary btn-lg">Ver Mais Fotos <i class="fa fa-refresh"></i></button>
   </div>
 
   <section id="features" class="parallax">
@@ -374,8 +367,7 @@
     <div id="contact-us" class="parallax">
       <div class="container">
         <div class="row">
-          <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms"
-            data-wow-delay="300ms">
+          <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h2>Contato</h2>
             <ul class="address">
 
@@ -417,8 +409,7 @@
         <div class="social-icons">
           <ul>
 
-            <li><a class="facebook" href="https://www.instagram.com/mvengenhariams/" target="_blank"><i
-                  class="fa fa-instagram"></i></a></li>
+            <li><a class="facebook" href="https://www.instagram.com/mvengenhariams/" target="_blank"><i class="fa fa-instagram"></i></a></li>
 
           </ul>
         </div>
@@ -455,9 +446,9 @@
 
 
   <script>
-    if (location.protocol !== 'https:') {
+    /*if (location.protocol !== 'https:') {
       location.replace(`https:${location.href.substring(location.protocol.length)}`);
-    }
+    }*/
   </script>
 
   <script>
@@ -466,7 +457,7 @@
     //  }
 
     document.getElementById("inputChat")
-      .addEventListener("keyup", function (event) {
+      .addEventListener("keyup", function(event) {
         event.preventDefault();
         if (event.keyCode === 13) {
           document.getElementById("buttonSend").click();
@@ -497,7 +488,7 @@
         "timeout": 0,
       };
 
-      $.ajax(settings).done(function (response) {
+      $.ajax(settings).done(function(response) {
 
         let resposta = `<div class="income-msg">
               <span class="msg">${response.resposta}</span>
@@ -515,8 +506,6 @@
 
 
     }
-
-
   </script>
 
   <script>
@@ -535,42 +524,42 @@
     var img7 = document.getElementById("img7");
     var img8 = document.getElementById("img8");
 
-    img1.onclick = function () {
+    img1.onclick = function() {
       modal.style.display = "block";
       modalImg.src = this.src;
       captionText.innerHTML = this.alt;
     }
-    img2.onclick = function () {
+    img2.onclick = function() {
       modal.style.display = "block";
       modalImg.src = this.src;
       captionText.innerHTML = this.alt;
     }
-    img3.onclick = function () {
+    img3.onclick = function() {
       modal.style.display = "block";
       modalImg.src = this.src;
       captionText.innerHTML = this.alt;
     }
-    img4.onclick = function () {
+    img4.onclick = function() {
       modal.style.display = "block";
       modalImg.src = this.src;
       captionText.innerHTML = this.alt;
     }
-    img5.onclick = function () {
+    img5.onclick = function() {
       modal.style.display = "block";
       modalImg.src = this.src;
       captionText.innerHTML = this.alt;
     }
-    img6.onclick = function () {
+    img6.onclick = function() {
       modal.style.display = "block";
       modalImg.src = this.src;
       captionText.innerHTML = this.alt;
     }
-    img7.onclick = function () {
+    img7.onclick = function() {
       modal.style.display = "block";
       modalImg.src = this.src;
       captionText.innerHTML = this.alt;
     }
-    img8.onclick = function () {
+    img8.onclick = function() {
       modal.style.display = "block";
       modalImg.src = this.src;
       captionText.innerHTML = this.alt;
@@ -580,10 +569,10 @@
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
+    span.onclick = function() {
       modal.style.display = "none";
     }
-    modal.onclick = function () {
+    modal.onclick = function() {
       modal.style.display = "none";
     }
 
@@ -604,7 +593,7 @@
         click = 700
       }
 
-      setTimeout(function () {
+      setTimeout(function() {
         if (cont == 3) {
           cont = 0
         }
@@ -664,7 +653,7 @@
           document.getElementById("img8").alt = "Fundação do tipo estacas pré-moldadas.";
         }
       }, 1);
-      setTimeout(function () {
+      setTimeout(function() {
         condition = false
         refreshButton = document.getElementById('refresh')
         refreshButton.click()
