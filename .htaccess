@@ -1,4 +1,0 @@
-RewriteEngine On
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} !^www\.mvconstrucoesms\.com\.br$ [NC]
-RewriteRule ^(.*)$ https://www.mvconstrucoesms.com.br/$1 [L,R=301]
